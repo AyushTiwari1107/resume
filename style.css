@@ -115,7 +115,7 @@ nav.sticky .menu-btn{
 .home{
   height: 100vh;
   width: 100%;
-  background: url("background.webp") no-repeat;
+  background: url("images/background.webp") no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -170,6 +170,51 @@ nav.sticky .menu-btn{
   color: #4070f4;
 }
 
+/* Add these animations to your stylesheet */
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+.center-line :hover {
+    color: #3498db; 
+    transition: color 0.3s;/* Change the text color to a bright color, e.g., #ff8c00, on hover */
+}
+
 
 .center-line {
   text-align: center;
@@ -179,6 +224,8 @@ nav.sticky .menu-btn{
   font-size: 18px;
   margin-top: 40px; /* Adjust this value to shift the line downwards */
 }
+
+
 
 /* About Section Styling */
 
@@ -393,6 +440,10 @@ section .button button:hover{
 /* Footer CSS */
 footer{
   background: #06042a;
+  position: fixed;
+  bottom: 0; 
+  left: 0; 
+  right: 0;
   padding: 15px 0;
   text-align: center;
   font-family: 'Poppins', sans-serif;
@@ -577,3 +628,126 @@ footer .text span a:hover{
     color: #4070f4;
   }
 }
+
+
+
+
+body {
+  background-image: url('Images/background.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #0E2431; /* Dark background color */
+}
+
+.container {
+  padding-top: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.col-lg-4 {
+  flex: 0 0 calc(33.33% - 10px); /* Adjust the width of the card views with some spacing */
+  margin: 5px;
+}
+
+.card-title {
+text-align: center;
+}
+.card {
+  width: 300px; 
+  height: 250px; 
+  background-color: #fff; /* White background color for the card views */
+  border: 1px solid #ccc; /* Border color for the card views */
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.servicesIcon {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #4070f4;
+  font-size: 36px;
+text-align: center;
+width: 100%;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 998;
+  transition: all 0.3s ease;
+  font-family: 'Ubuntu', sans-serif;
+  background-color: black; /* Black background for the navigation bar */
+}
+
+.home {
+height: 100vh;
+width: 100%;
+background: url("images/background.webp") no-repeat;
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+font-family: 'Ubuntu', sans-serif;
+}
+
+
+.center-line {
+text-align: center;
+color: #fff; /* White font color */
+background-color: #000; /* Background color */
+padding: 10px;
+font-size: 18px;
+margin-top: 40px; /* Adjust this value to shift the line downwards */
+}
+.center-line :hover {
+color: #3498db;
+transition: color 0.3s;
+}
+
+
+h1 {
+padding-top: 30px;
+text-align: center;
+color: #fff; /* White color for the "Skills" heading */
+margin-bottom: 20px;
+font-size: 36px; /* Customize the font size */
+font-family: 'Arial', sans-serif; /* Customize the font family */
+}
+
+.text-center {
+  padding-top: 80px;
+  text-align: center;
+}
+
+/* Additional CSS to center the button within the div */
+.text-center a {
+  display: inline-block; /* Make the link a block-level element */
+}
+
+
+.card-footer {
+  text-align: center;
+  padding: 10px;
+}
+
+
+
