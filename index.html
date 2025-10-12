@@ -4,49 +4,280 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AyushFlix | Portfolio</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-    body{background-color:#000;color:#fff;overflow-x:hidden;}
-    header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(0,0,0,0.8);position:fixed;width:100%;top:0;z-index:1000;}
-    .logo{color:#e50914;font-size:28px;font-weight:700;letter-spacing:1px;}
-    nav{display:flex;gap:20px;}
-    nav a{color:#fff;text-decoration:none;font-weight:500;transition:color .3s;}
-    nav a:hover{color:#e50914;}
-    .hamburger{display:none;flex-direction:column;cursor:pointer;}
-    .hamburger span{height:3px;width:25px;background:#fff;margin:4px 0;transition:0.4s;}
-    @media(max-width:768px){nav{display:none;flex-direction:column;position:absolute;top:70px;right:0;background:#111;width:200px;padding:20px;}
-      nav.active{display:flex;}
-      .hamburger{display:flex;}}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-    .intro{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;display:flex;justify-content:center;align-items:center;z-index:2000;animation:fadeOut 3s ease 3s forwards;}
-    .intro span{font-size:60px;font-weight:700;color:#e50914;opacity:0;animation:fadeIn 2s forwards 0.5s;letter-spacing:4px;}
-    @keyframes fadeIn{to{opacity:1;}}
-    @keyframes fadeOut{to{opacity:0;visibility:hidden;}}
+    body {
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-    .hero{background:linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0.2)),url('https://images.unsplash.com/photo-1600402442481-cdf9a94e2d4d?auto=format&fit=crop&w=1400&q=80');height:100vh;background-size:cover;background-position:center;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-left:80px;text-shadow:0 2px 8px rgba(0,0,0,0.8);}
-    .hero h1{font-size:56px;margin-bottom:20px;max-width:600px;line-height:1.2;}
-    .hero p{font-size:20px;color:#b3b3b3;margin-bottom:30px;}
-    .btn-primary{background-color:#e50914;color:#fff;padding:12px 28px;border:none;border-radius:4px;font-size:16px;cursor:pointer;transition:background .3s;}
-    .btn-primary:hover{background-color:#f40612;}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
 
-    section{padding:100px 60px;}
-    .section-title{font-size:32px;margin-bottom:30px;border-left:4px solid #e50914;padding-left:10px;}
-    .skills,.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
-    .card{background-color:#181818;border-radius:8px;padding:20px;transition:transform .3s,box-shadow .3s;}
-    .card:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(229,9,20,0.5);}
+    .logo {
+      color: #e50914;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
 
-    .project-card{position:relative;background-color:#181818;overflow:hidden;border-radius:8px;cursor:pointer;}
-    .project-card img{width:100%;display:block;border-radius:8px;transition:transform .4s ease,opacity .4s ease;opacity:0.8;}
-    .project-card:hover img{transform:scale(1.05);opacity:0.5;}
-    .project-info{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;opacity:0;transition:opacity .4s ease;}
-    .project-card:hover .project-info{opacity:1;}
+    nav {
+      display: flex;
+      gap: 20px;
+    }
 
-    footer{background-color:#111;text-align:center;padding:20px;color:#b3b3b3;font-size:14px;}
-    @media(max-width:768px){header{padding:15px 20px;} .hero{padding-left:30px;} .hero h1{font-size:36px;} section{padding:80px 20px;}}
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #e50914;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #111;
+        width: 200px;
+        padding: 20px;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    .intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      animation: fadeOut 3s ease 3s forwards;
+    }
+
+    .intro span {
+      font-size: 60px;
+      font-weight: 700;
+      color: #e50914;
+      opacity: 0;
+      animation: fadeIn 2s forwards 0.5s;
+      letter-spacing: 4px;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    .hero {
+  position: relative;
+  margin-top: 80px; /* if header is fixed */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)),
+    url('images/background_img.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 80px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+      max-width: 600px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #b3b3b3;
+      margin-bottom: 30px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      background-color: #e50914;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #f40612;
+    }
+
+    .btn-primary i {
+      font-size: 18px;
+      margin-right: 8px;
+    }
+
+    section {
+      padding: 100px 60px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      margin-bottom: 30px;
+      border-left: 4px solid #e50914;
+      padding-left: 10px;
+    }
+
+    .skills,
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #181818;
+      border-radius: 8px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+    }
+
+    .project-card {
+      position: relative;
+      background-color: #181818;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .project-card img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      opacity: 0.8;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+      opacity: 0.5;
+    }
+
+    .project-info {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .project-card:hover .project-info {
+      opacity: 1;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 20px;
+      color: #b3b3b3;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      .hero {
+        padding-left: 30px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      section {
+        padding: 80px 20px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="intro"><span>INTROFLIX</span></div>
+
   <header>
     <div class="logo">INTROFLIX</div>
     <div class="hamburger" onclick="toggleMenu()">
@@ -62,8 +293,8 @@
   </header>
 
   <section id="home" class="hero">
-    <h1>Hi, I'm Ayush — Android & Kotlin Developer</h1>
-    <p>Crafting powerful mobile experiences with clean code and creative logic.</p>
+    <h1>Hi, I'm Ayush — Android & iOS Developer</h1>
+    <p>Crafting powerful mobile experiences with clean and scalable code.</p>
     <button class="btn-primary" onclick="scrollToSection('projects')">View My Work</button>
   </section>
 
@@ -81,14 +312,14 @@
     <h2 class="section-title">Projects</h2>
     <div class="projects">
       <div class="project-card" onclick="openProject('d_2_d.html')">
-	<img src="images/cargo-thumbnail.png" alt="Cargo Project" />
+        <img src="images/cargo-thumbnail.png" alt="Cargo Project" />
         <div class="project-info">
           <h3>D2D Logistics App</h3>
           <p>Optimized routing and cost-effective tracking system.</p>
         </div>
       </div>
       <div class="project-card" onclick="openProject('keva.html')">
-	<img src="images/perfume_thumbnail.jpg" alt="Perfume Project" />
+        <img src="images/perfume_thumbnail.jpg" alt="Perfume Project" />
         <div class="project-info">
           <h3>Perfume Management</h3>
           <p>API and database integration for high-scale operations.</p>
@@ -97,17 +328,24 @@
     </div>
   </section>
 
- <section id="about">
-  <h2 class="section-title">About</h2>
-  <p style="max-width:800px;color:#b3b3b3;line-height:1.6;">
-    I'm a Jr. Mobility Developer with experience in Android development, RESTful API integration, and logistics system optimization. Passionate about clean UI/UX, performance, and innovation in mobile tech.
-  </p>
+  <section id="about">
+    <h2 class="section-title">About</h2>
+    <p style="max-width:800px;color:#b3b3b3;line-height:1.6;">
+      I'm a Jr. Mobility Developer with experience in Android development, RESTful API integration, and logistics system optimization. Passionate about clean UI/UX, performance, and innovation in mobile tech.
+    </p>
 
-  <div style="margin-top: 30px;">
-    <a href="Ayush_Tiwari_Resume.pdf" target="_blank" class="btn-primary" style="text-decoration: none; margin-right: 10px;">View Resume</a>
-  </div>
-</section>
-
+    <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px;">
+      <a href="Ayush_Tiwari_Resume.pdf" target="_blank" class="btn-primary">
+        <i class="fas fa-file-alt"></i> View Resume
+      </a>
+      <a href="https://www.linkedin.com/in/ayushrtiwari11/" target="_blank" class="btn-primary" style="background-color: #0077b5;">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/AyushTiwari1107" target="_blank" class="btn-primary" style="background-color: #24292e;">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+    </div>
+  </section>
 
   <section id="contact">
     <h2 class="section-title">Contact</h2>
@@ -120,9 +358,17 @@
   </footer>
 
   <script>
-    function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
-    function toggleMenu(){document.getElementById('menu').classList.toggle('active');}
-    function openProject(page){window.open(page,'_blank');}
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('active');
+    }
+
+    function openProject(page) {
+      window.open(page, '_blank');
+    }
   </script>
 </body>
 </html>
