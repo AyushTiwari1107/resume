@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | INTROFLIX</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 20px 40px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      color: #e50914;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    section {
+      padding: 60px 40px;
+    }
+
+    h2.section-title {
+      font-size: 36px;
+      margin-bottom: 40px;
+      border-left: 5px solid #e50914;
+      padding-left: 15px;
+    }
+
+   .project-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Fixed 4 columns */
+  gap: 30px;
+}
+
+
+    .project-card {
+      background-color: #181818;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(229, 9, 20, 0.5);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 20px;
+    }
+
+    .project-content h3 {
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: #b3b3b3;
+      font-size: 15px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .project-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #e50914;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #f40612;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #b3b3b3;
+      background-color: #111;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">INTROFLIX PROJECTS</div>
+  </header>
+
+  <section>
+    <h2 class="section-title">My Work Collection</h2>
+    <div class="project-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <img src="images/canteen_bg.jpg" alt="ToDo List">
+        <div class="project-content">
+          <h3>Canteen Mobile App</h3>
+          <p>Full-stack To-Do app with Android frontend and Firebase backend, deployed on github.</p>
+          <div class="project-buttons">
+            <a href="https://github.com/AyushTiwari1107/canteen" target="_blank" class="btn">
+              <i class="fab fa-github"></i> GitHub Repo
+            </a>
+            <a href="https://github.com/AyushTiwari1107/android_app/raw/main/canteen.apk" class="btn">
+              <i class="fas fa-download"></i> Download App
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Ayush Tiwari | Designed in Netflix Theme</p>
+  </footer>
+</body>
+</html>
+
