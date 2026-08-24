@@ -3,428 +3,367 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INTROFLIX | Portfolio</title>
 
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- ============================================================
+       PAGE TITLE + SEO
+       Edit these any time your role or focus changes.
+  ============================================================= -->
+  <title>Ayush Tiwari — Android Developer</title>
+  <meta name="description" content="Ayush Tiwari is an Android Developer building production Kotlin apps in the air-cargo and logistics domain. Creator of an open-source barcode scanner library for Android." />
+  <meta name="author" content="Ayush Tiwari" />
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+  <!-- Open Graph tags: control how this page looks when shared on LinkedIn, WhatsApp, Twitter/X, etc. -->
+  <!-- TODO: once this site is live on GitHub Pages, replace the two URLs below with your real Pages URL. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ayush Tiwari — Android Developer" />
+  <meta property="og:description" content="I build production Android apps with clean, scalable Kotlin code — currently working in the air-cargo and logistics domain." />
+  <meta property="og:url" content="https://ayushtiwari1107.github.io/" />
+  <meta property="og:image" content="https://ayushtiwari1107.github.io/images/cargo-thumbnail.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ayush Tiwari — Android Developer" />
+  <meta name="twitter:description" content="I build production Android apps with clean, scalable Kotlin code — currently working in the air-cargo and logistics domain." />
 
-    body {
-      background-color: #000;
-      color: #fff;
-      overflow-x: hidden;
-    }
+  <!-- Simple emoji favicon -- zero external files needed. Swap the emoji for a photo/logo later if you want. -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>" />
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: rgba(0, 0, 0, 0.8);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo {
-      color: #e50914;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #e50914;
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .hamburger span {
-      height: 3px;
-      width: 25px;
-      background: #fff;
-      margin: 4px 0;
-      transition: 0.4s;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: #111;
-        width: 200px;
-        padding: 20px;
-      }
-
-      nav.active {
-        display: flex;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-    }
-
-    .intro {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-      animation: fadeOut 3s ease 3s forwards;
-    }
-
-    .intro span {
-      font-size: 60px;
-      font-weight: 700;
-      color: #e50914;
-      opacity: 0;
-      animation: fadeIn 2s forwards 0.5s;
-      letter-spacing: 4px;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-    .hero {
-      position: relative;
-      margin-top: 80px;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)),
-        url('images/background_img.jpg');
-      height: 100vh;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding-left: 80px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-      z-index: 1;
-    }
-
-    .hero h1 {
-      font-size: 56px;
-      margin-bottom: 20px;
-      max-width: 600px;
-      line-height: 1.2;
-    }
-
-    .hero p {
-      font-size: 20px;
-      color: #b3b3b3;
-      margin-bottom: 30px;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      background-color: #e50914;
-      color: #fff;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: background 0.3s;
-      text-decoration: none;
-    }
-
-    .btn-primary:hover {
-      background-color: #f40612;
-    }
-
-    .btn-primary i {
-      font-size: 18px;
-      margin-right: 8px;
-    }
-
-    section {
-      padding: 100px 60px;
-    }
-
-    .section-title {
-      font-size: 32px;
-      margin-bottom: 30px;
-      border-left: 4px solid #e50914;
-      padding-left: 10px;
-    }
-
-    .skills,
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background-color: #181818;
-      border-radius: 8px;
-      padding: 20px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
-    }
-
-    .project-card {
-      position: relative;
-      background-color: #181818;
-      overflow: hidden;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .project-card img {
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-      transition: transform 0.4s ease, opacity 0.4s ease;
-      opacity: 0.8;
-    }
-
-    .project-card:hover img {
-      transform: scale(1.05);
-      opacity: 0.5;
-    }
-
-    .project-info {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .project-card:hover .project-info {
-      opacity: 1;
-    }
-
-    footer {
-      background-color: #111;
-      text-align: center;
-      padding: 20px;
-      color: #b3b3b3;
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 15px 20px;
-      }
-
-      .hero {
-        padding-left: 30px;
-      }
-
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      section {
-        padding: 80px 20px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="intro">
-    <span>INTROFLIX</span>
-  </div>
 
-  <header>
-    <div class="logo">INTROFLIX</div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+  <!-- Accessibility: lets keyboard users skip straight to the main content -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ============================================================
+       NAVIGATION
+       This bar stays fixed to the top of the page while scrolling.
+  ============================================================= -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="#home" class="logo">Ayush Tiwari</a>
+
+      <!-- Hamburger button, only visible on small screens -->
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="primaryNav" class="primary-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+
+        <!-- Light / dark mode switch -->
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span aria-hidden="true">🌙</span>
+        </button>
+      </nav>
     </div>
-    <nav id="menu">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="projects.html">Projects</a>
-      <a href="#workexperience">Professional</a>
-      <a href="#contact">Contact</a>
-    </nav>
   </header>
 
-  <section id="home" class="hero">
-    <h1>Hi, I'm Ayush — Android & iOS Developer</h1>
-    <p>Crafting powerful mobile experiences with clean and scalable code.</p>
-    <button class="btn-primary" onclick="scrollToSection('workexperience')">View My Work</button>
-  </section>
+  <main id="main-content">
 
-  <section id="skills">
-    <h2 class="section-title">Skills</h2>
-    <div class="skills">
-      <div class="card"><h3>Languages</h3><p>Java, Kotlin, Swift</p></div>
-      <div class="card"><h3>Frameworks</h3><p>Android, Jetpack Compose, Retrofit</p></div>
-      <div class="card"><h3>Databases</h3><p>SQLite, Room, MySQL</p></div>
-      <div class="card"><h3>Version Control</h3><p>Git, Azure DevOps</p></div>
-    </div>
-  </section>
+    <!-- ============================================================
+         HERO / INTRO
+    ============================================================= -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Hello, I'm</p>
+        <h1>Ayush Tiwari</h1>
+        <p class="hero-title">Android Developer</p>
+        <p class="hero-pitch">
+          I build production Android apps with clean, scalable Kotlin code —
+          currently working in the air-cargo and logistics domain.
+        </p>
 
-  <section id="workexperience">
-    <h2 class="section-title">Industry Projects</h2>
-    <div class="projects">
-      <div class="project-card" onclick="openProject('d_2_d.html')">
-        <img src="images/cargo-thumbnail.png" alt="Cargo Project" />
-        <div class="project-info">
-          <h3>D2D Logistics App</h3>
-          <p>Optimized routing and cost-effective tracking system.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="./Ayush_Tiwari_Resume.pdf" target="_blank" rel="noopener">
+            View Resume
+          </a>
+          <a class="btn btn-secondary" href="https://github.com/AyushTiwari1107" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            GitHub
+          </a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/ayushrtiwari11/" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M13.5 0h-11A2.5 2.5 0 0 0 0 2.5v11A2.5 2.5 0 0 0 2.5 16h11a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 13.5 0ZM4.94 13.44H2.42V6h2.52v7.44ZM3.68 4.9a1.46 1.46 0 1 1 0-2.92 1.46 1.46 0 0 1 0 2.92Zm9.76 8.54h-2.52V9.83c0-.87-.02-1.99-1.21-1.99-1.22 0-1.41.95-1.41 1.93v3.67H5.78V6h2.42v1.02h.03c.34-.64 1.16-1.31 2.38-1.31 2.54 0 3.01 1.67 3.01 3.85v3.88Z"/></svg>
+            LinkedIn
+          </a>
         </div>
       </div>
-      <div class="project-card" onclick="openProject('keva.html')">
-        <img src="images/perfume_thumbnail.jpg" alt="Perfume Project" />
-        <div class="project-info">
-          <h3>Perfume Management</h3>
-          <p>API and database integration for high-scale operations.</p>
+    </section>
+
+    <!-- ============================================================
+         ABOUT
+         Edit the paragraph below to update your bio.
+    ============================================================= -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p class="about-text">
+          I'm a Jr. Mobility Developer at SmartKargo Technologies with around 2 years of Android
+          development experience. I work day-to-day in Kotlin and Java with Jetpack Compose and
+          MVVM/Clean Architecture, and I build and maintain production apps used in real logistics
+          operations. I've built two production apps from scratch in Kotlin and Jetpack Compose, and
+          led the migration of an existing app from Java to Kotlin that is now used internationally —
+          replacing a paid Google API with an in-house tracking solution along the way. I'm comfortable
+          working with Bluetooth, camera, and GPS/location APIs, including background service work. I
+          also publish open-source Android tools and I'm continually deepening my computer-science
+          fundamentals.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SKILLS
+         To add/remove a skill, just add/remove a <span class="chip"> inside the right group.
+    ============================================================= -->
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>Languages</h3>
+            <div class="chip-list">
+              <span class="chip">Kotlin</span>
+              <span class="chip">Java</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Android</h3>
+            <div class="chip-list">
+              <span class="chip">Jetpack Compose</span>
+              <span class="chip">XML / Views</span>
+              <span class="chip">Coroutines</span>
+              <span class="chip">Flow</span>
+              <span class="chip">MVVM</span>
+              <span class="chip">Clean Architecture</span>
+              <span class="chip">Activity / Fragment Lifecycle</span>
+              <span class="chip">ViewModel</span>
+              <span class="chip">LiveData / StateFlow</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Data &amp; Networking</h3>
+            <div class="chip-list">
+              <span class="chip">Retrofit</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">Room</span>
+              <span class="chip">SQLite</span>
+              <span class="chip">Firebase</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Tools &amp; Delivery</h3>
+            <div class="chip-list">
+              <span class="chip">Git</span>
+              <span class="chip">Azure DevOps</span>
+              <span class="chip">Gradle</span>
+              <span class="chip">JitPack</span>
+              <span class="chip">GitHub Actions (CI/CD)</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Fundamentals</h3>
+            <div class="chip-list">
+              <span class="chip">Data Structures &amp; Algorithms (Java)</span>
+              <span class="chip">OOP</span>
+              <span class="chip">Problem Solving (250+ LeetCode)</span>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- ============================================================
+         PROJECTS
+         The Scanner Library card is marked "featured" so it displays first
+         and larger. To add a new project, copy a <article class="project-card">
+         block and edit the text/links/tags inside it.
+    ============================================================= -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="projects-grid">
+
+          <!-- Featured project: Android Scanner Library -->
+          <article class="project-card project-card--featured">
+            <div class="project-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="40" height="40"><path fill="currentColor" d="M2 4h2v16H2V4Zm3 0h1v16H5V4Zm2 0h2v16H7V4Zm3 0h1v16h-1V4Zm2 0h3v16h-3V4Zm4 0h1v16h-1V4Zm2 0h2v16h-2V4Z"/></svg>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-card-badges">
+                <span class="badge badge-accent">My Best Work</span>
+                <span class="badge">Open Source</span>
+                <span class="badge">MIT Licensed</span>
+              </div>
+
+              <h3>Android Scanner Library</h3>
+              <p>
+                An open-source Android library that manages hardware barcode-scanner lifecycle
+                cleanly, built around Zebra EMDK scanners. It fixes a real production bug where the
+                scanner would break intermittently and fire on the wrong screens — the library gives
+                proper ownership and lifecycle handling, plus a fallback for non-Zebra devices.
+                Written as a proper Kotlin library module with unit tests, a CI workflow, and an MIT
+                license. Published on JitPack.
+              </p>
+
+              <div class="chip-list">
+                <span class="chip">Kotlin</span>
+                <span class="chip">Android Library</span>
+                <span class="chip">JitPack</span>
+                <span class="chip">Unit Testing</span>
+                <span class="chip">CI/CD</span>
+              </div>
+
+              <a class="btn btn-primary" href="https://github.com/AyushTiwari1107/scannerlibraryandroid" target="_blank" rel="noopener">
+                View on GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- D2D Logistics App -->
+          <article class="project-card">
+            <img class="project-card-img" src="images/cargo-thumbnail.png" alt="D2D Logistics App screenshot showing route and tracking screens" loading="lazy" />
+            <div class="project-card-body">
+              <div class="project-card-badges">
+                <span class="badge">Production · SmartKargo</span>
+              </div>
+              <h3>D2D Logistics App</h3>
+              <p>
+                A door-to-door logistics Android app with optimized routing and a cost-effective
+                location-tracking system. Built a tracking system serving 10,000+ users that replaced
+                paid Google APIs and cut tracking costs by about 87%. Contributed to migrating the
+                codebase from Java to Kotlin and from XML views to Jetpack Compose.
+              </p>
+              <div class="chip-list">
+                <span class="chip">Kotlin</span>
+                <span class="chip">Jetpack Compose</span>
+                <span class="chip">Location Tracking</span>
+                <span class="chip">REST APIs</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Canteen App -->
+          <article class="project-card">
+            <img class="project-card-img" src="images/canteen_bg.jpg" alt="Canteen App interface" loading="lazy" />
+            <div class="project-card-body">
+              <div class="project-card-badges">
+                <span class="badge">Personal Project</span>
+              </div>
+              <h3>Canteen App</h3>
+              <p>A full-stack Android app with a Firebase backend.</p>
+              <div class="chip-list">
+                <span class="chip">Android</span>
+                <span class="chip">Firebase</span>
+              </div>
+              <a class="btn btn-secondary" href="https://github.com/AyushTiwari1107/canteen" target="_blank" rel="noopener">
+                View on GitHub
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EXPERIENCE
+    ============================================================= -->
+    <section id="experience" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+
+        <div class="timeline-item">
+          <div class="timeline-heading">
+            <h3>Jr. Mobility Developer</h3>
+            <span class="timeline-date">Nov 2024 – Present</span>
+          </div>
+          <p class="timeline-company">SmartKargo Technologies</p>
+          <ul class="timeline-list">
+            <li>Build and maintain production Android apps in the air-cargo / airline logistics domain using Kotlin, Jetpack Compose, and MVVM/Clean Architecture.</li>
+            <li>Recently built an "Airwaybill Acceptance" feature: scan or enter an AWB, validate it, collect valid entries in a live list, and surface duplicate/invalid scans for review.</li>
+            <li>Built two production apps from scratch in Kotlin and Jetpack Compose, and led migrating an existing app from Java to Kotlin that is now used internationally.</li>
+            <li>Replaced a paid Google location API with a cost-effective in-house tracking solution, cutting tracking costs by roughly 87% for 10,000+ users.</li>
+            <li>Hands-on experience with Bluetooth, camera, and GPS/location APIs, including background service work.</li>
+            <li>Work with REST API integration and version control via Git and Azure DevOps.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EDUCATION
+    ============================================================= -->
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <p class="education-line">
+          <strong>B.E. in Computer Science</strong> — Jawaharlal Nehru Engineering College (MGM University),
+          Chhatrapati Sambhajinagar, Maharashtra · Graduated 2024
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT
+    ============================================================= -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="contact-intro">Feel free to reach out — I'm happy to talk about Android, open source, or new opportunities.</p>
+
+        <div class="contact-grid">
+          <a class="contact-item" href="mailto:ayushrtiwari1107@gmail.com">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 4h20v16H2V4Zm2 2v.01L12 12l8-5.99V6H4Zm16 2.24-7.42 5.56a1 1 0 0 1-1.16 0L4 8.24V18h16V8.24Z"/></svg>
+            ayushrtiwari1107@gmail.com
+          </a>
+          <a class="contact-item" href="tel:+918625814061">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8Z"/></svg>
+            +91 8625814061
+          </a>
+          <a class="contact-item" href="https://github.com/AyushTiwari1107" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            github.com/AyushTiwari1107
+          </a>
+          <a class="contact-item" href="https://www.linkedin.com/in/ayushrtiwari11/" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M13.5 0h-11A2.5 2.5 0 0 0 0 2.5v11A2.5 2.5 0 0 0 2.5 16h11a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 13.5 0ZM4.94 13.44H2.42V6h2.52v7.44ZM3.68 4.9a1.46 1.46 0 1 1 0-2.92 1.46 1.46 0 0 1 0 2.92Zm9.76 8.54h-2.52V9.83c0-.87-.02-1.99-1.21-1.99-1.22 0-1.41.95-1.41 1.93v3.67H5.78V6h2.42v1.02h.03c.34-.64 1.16-1.31 2.38-1.31 2.54 0 3.01 1.67 3.01 3.85v3.88Z"/></svg>
+            linkedin.com/in/ayushrtiwari11
+          </a>
+        </div>
+
+        <a class="btn btn-primary contact-resume-btn" href="./Ayush_Tiwari_Resume.pdf" target="_blank" rel="noopener">
+          View Resume
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Ayush Tiwari. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="mailto:ayushrtiwari1107@gmail.com">Email</a>
+        <a href="https://github.com/AyushTiwari1107" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/ayushrtiwari11/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
-  </section>
-
-  <section id="about">
-    <h2 class="section-title">About</h2>
-    <p style="max-width:800px;color:#b3b3b3;line-height:1.6;">
-      I'm a Jr. Mobility Developer with experience in Android development, RESTful API integration, and logistics system optimization. Passionate about clean UI/UX, performance, and innovation in mobile tech.
-    </p>
-
-    <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px;">
-      <a href="Ayush_Tiwari_Resume.pdf" target="_blank" class="btn-primary">
-        <i class="fas fa-file-alt"></i> View Resume
-      </a>
-      <a href="https://www.linkedin.com/in/ayushrtiwari11/" target="_blank" class="btn-primary" style="background-color: #0077b5;">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-      <a href="https://github.com/AyushTiwari1107" target="_blank" class="btn-primary" style="background-color: #24292e;">
-        <i class="fab fa-github"></i> GitHub
-      </a>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2 class="section-title">Contact</h2>
-    <p>Email: <a href="mailto:ayushrtiwari1107@gmail.com" style="color:#e50914;">ayushrtiwari1107@gmail.com</a></p>
-    <p>Phone: <span style="color:#b3b3b3;">+91 8625814061</span></p>
-  </section>
-
-  <footer>
-    <p>© 2025 Ayush Tiwari | Designed in Netflix Theme</p>
   </footer>
 
-  <audio id="introSound" src="netflix_sound.mp3" preload="auto"></audio>
-
-  <script>
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('active');
-    }
-
-    function openProject(url) {
-      window.open(url, '_blank');
-    }
-
-    // Handle intro animation showing once per session
-    const intro = document.querySelector('.intro');
-    const introSound = document.getElementById('introSound');
-
-    if (!sessionStorage.getItem('introShown')) {
-      // Show intro
-      intro.style.display = 'flex';
-
-      // Play sound on first user interaction only (click anywhere)
-      let soundPlayed = false;
-      function playSoundOnce() {
-        if (!soundPlayed) {
-          introSound.play().catch(() => {});
-          soundPlayed = true;
-          document.removeEventListener('click', playSoundOnce);
-        }
-      }
-      document.addEventListener('click', playSoundOnce);
-
-      // After 4.5 seconds hide intro & mark shown
-      setTimeout(() => {
-        intro.style.opacity = '0';
-        setTimeout(() => {
-          intro.style.display = 'none';
-        }, 1500);
-        sessionStorage.setItem('introShown', 'true');
-      }, 4500);
-
-    } else {
-      intro.style.display = 'none';
-    }
-
-    // Save scroll position before unload
-    window.addEventListener('beforeunload', () => {
-      sessionStorage.setItem('scrollPosition', window.scrollY);
-    });
-
-    // Restore scroll position on load
-    window.addEventListener('load', () => {
-      const scrollPos = sessionStorage.getItem('scrollPosition');
-      if (scrollPos) {
-        window.scrollTo(0, parseInt(scrollPos));
-      }
-    });
-
-    // Optional: Clear introShown on window unload to reset intro next visit
-    // Uncomment if you want intro every visit (not session)
-    // window.addEventListener('unload', () => {
-    //   sessionStorage.removeItem('introShown');
-    // });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

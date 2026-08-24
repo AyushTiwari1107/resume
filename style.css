@@ -1,0 +1,614 @@
+/* ==================================================================
+   AYUSH TIWARI — PORTFOLIO STYLES
+   Written mobile-first: base rules target small screens, then
+   @media (min-width: ...) blocks add layout for tablet/desktop.
+   ================================================================== */
+
+/* ---------- 1. THEME COLORS ----------
+   All colors live here as CSS variables. Change a value once and it
+   updates everywhere. The dark-mode block below overrides the same
+   variable names when data-theme="dark" is set on <html>.
+------------------------------------------------------------------- */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f8fafc;
+  --color-text: #1e293b;
+  --color-text-muted: #55647a;
+  --color-border: #e2e8f0;
+  --color-card-bg: #ffffff;
+  --color-accent: #2563eb;
+  --color-accent-dark: #1d4ed8;
+  --color-accent-contrast: #ffffff;
+  --color-chip-bg: #eef2ff;
+  --color-chip-text: #3730a3;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+
+  --radius: 10px;
+  --max-width: 1080px;
+}
+
+/* Dark mode: applied when the user toggles the moon/sun button
+   (script.js sets data-theme="dark" on <html> and saves the choice). */
+[data-theme="dark"] {
+  --color-bg: #0f172a;
+  --color-bg-alt: #16213a;
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-border: #2c3b57;
+  --color-card-bg: #16213a;
+  --color-accent: #60a5fa;
+  --color-accent-dark: #93c5fd;
+  --color-accent-contrast: #0f172a;
+  --color-chip-bg: #1e2c4d;
+  --color-chip-text: #bcd0ff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- 2. RESET & BASE ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-accent-dark);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Accessibility: visible focus outline for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* "Skip to content" link: hidden until a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  padding: 10px 16px;
+  border-radius: 6px;
+  z-index: 2000;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+/* ---------- 3. HEADER / NAVIGATION ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.primary-nav {
+  display: none;
+  align-items: center;
+  gap: 22px;
+}
+
+.primary-nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.primary-nav a:hover {
+  color: var(--color-accent-dark);
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hamburger button (mobile only) */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 1px;
+}
+
+/* Mobile dropdown menu, toggled by script.js adding .is-open */
+.primary-nav.is-open {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: 16px 20px 20px;
+}
+
+@media (min-width: 800px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .primary-nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    border: none;
+    padding: 0;
+    background: none;
+  }
+}
+
+/* ---------- 4. GENERIC SECTION LAYOUT ---------- */
+.section {
+  padding: 56px 0;
+}
+
+.section-alt {
+  background-color: var(--color-bg-alt);
+}
+
+.section-title {
+  font-size: 1.6rem;
+  margin: 0 0 28px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--color-accent);
+  display: inline-block;
+}
+
+/* ---------- 5. HERO ---------- */
+.hero {
+  padding: 72px 0 56px;
+}
+
+.hero-inner {
+  max-width: 700px;
+}
+
+.eyebrow {
+  color: var(--color-accent-dark);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin: 0 0 8px;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+.hero-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-accent-dark);
+  margin: 0 0 16px;
+}
+
+.hero-pitch {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  margin: 0 0 28px;
+  max-width: 56ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+}
+
+/* ---------- 6. BUTTONS ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-dark);
+  color: var(--color-accent-contrast);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent-dark);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ---------- 7. ABOUT ---------- */
+.about-text {
+  max-width: 70ch;
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- 8. SKILLS ---------- */
+.skills-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 700px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.skill-group h3 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 0;
+}
+
+.chip {
+  background-color: var(--color-chip-bg);
+  color: var(--color-chip-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+/* ---------- 9. PROJECTS ---------- */
+.projects-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 800px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* The featured project (scanner library) spans both columns
+     so it reads as the largest, most important card. */
+  .project-card--featured {
+    grid-column: 1 / -1;
+  }
+}
+
+.project-card {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.project-card-img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.project-card-icon {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  background-color: var(--color-chip-bg);
+}
+
+.project-card-body {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-card-body h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.project-card-body p {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.project-card-body .btn {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+.project-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.badge-accent {
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border-color: var(--color-accent);
+}
+
+/* Featured card gets a bit more breathing room + an accent border */
+.project-card--featured {
+  border: 2px solid var(--color-accent);
+}
+
+@media (min-width: 800px) {
+  .project-card--featured {
+    flex-direction: row;
+  }
+
+  .project-card--featured .project-card-icon {
+    height: auto;
+    width: 220px;
+    flex-shrink: 0;
+  }
+}
+
+/* ---------- 10. EXPERIENCE ---------- */
+.timeline-item {
+  max-width: 760px;
+}
+
+.timeline-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.timeline-heading h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.timeline-date {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.timeline-company {
+  color: var(--color-accent-dark);
+  font-weight: 600;
+  margin: 4px 0 16px;
+}
+
+.timeline-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--color-text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ---------- 11. EDUCATION ---------- */
+.education-line {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- 12. CONTACT ---------- */
+.contact-intro {
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin: 0 0 28px;
+}
+
+.contact-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 700px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 500;
+  transition: border-color 0.15s ease;
+}
+
+.contact-item:hover {
+  border-color: var(--color-accent);
+}
+
+.contact-item .icon {
+  color: var(--color-accent);
+}
+
+/* ---------- 13. FOOTER ---------- */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 24px 0;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+}
+
+.footer-links a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: var(--color-accent-dark);
+}
+
+@media (min-width: 600px) {
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
